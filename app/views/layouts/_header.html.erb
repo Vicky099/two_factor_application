@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default">
+  	<div class="container-fluid">
+		<div class="navbar-header">
+	  		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+	  		</button>
+	  		<%= link_to homes_path, class: 'navbar-brand' do %>
+				Sample Authy App
+	  		<% end %>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+	  		<ul class="nav navbar-nav">
+				<li><a>Version 1.0</a></li>
+	  		</ul>
+	  		<ul class="nav navbar-nav navbar-right">
+	  			<% if signed_in? %>
+					<li>
+						<%= link_to logout_session_path(current_user), method: :delete do %>
+		  					<span class="glyphicon glyphicon-off"> </span>
+		  					Sign Out
+						<% end %>
+					</li>
+					<li>
+						<%= link_to edit_user_path(current_user) do %>
+		  					<span class="glyphicon glyphicon-user"> </span>
+		  					Setting
+						<% end %>
+					</li>
+	  			<% else %>
+	  				<li>
+						<%= link_to new_session_path do %>
+			  				<span class="glyphicon glyphicon-log-in"> </span> Sign In
+						<% end %>
+					</li>
+	  			<% end %>
+	  		</ul>
+		</div>
+  	</div>
+</nav>
+

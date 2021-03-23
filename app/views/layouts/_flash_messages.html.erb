@@ -1,0 +1,3 @@
+<%= content_tag 'p', (flash[:notice] || flash[:success]).html_safe, class: 'alert alert-success alert-dismissible' if flash[:notice] || flash[:success] %>
+<%= content_tag 'p', (flash[:error] || flash[:alert]).html_safe, class: 'alert alert-danger alert-dismissible' if flash[:error] || flash[:alert] %>
+<% flash.clear if(request.path.split("/").last != "thank-you") %>

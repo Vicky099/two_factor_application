@@ -1,0 +1,59 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require font-awesome
+ *= require_self
+ */
+
+
+.text-red{
+	color: #FF0000;
+}
+
+.footer {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10px 0px 5px 0px;
+	background-color: grey;
+	color: white;
+	text-align: center;
+}
+
+html, body {
+  	height: 100%;
+  	margin: 0;
+}
+.wrapper {
+  	min-height: 89%;
+
+  	/* Equal to height of footer */
+  	/* But also accounting for potential margin-bottom of last child */
+  	margin-bottom: -50px;
+}
+.footer, .push {
+  	height: 53px;
+}
+
+span.inline-paragraph p.text-left{
+	float: left;
+}
+
+.btn{
+	margin-bottom: 5px;
+}
+@media screen and (max-width: 767px) {
+  	.btn {
+    	width: 100%;
+  	}
+}

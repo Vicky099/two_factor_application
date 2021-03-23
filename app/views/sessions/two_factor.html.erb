@@ -1,0 +1,33 @@
+<div class="panel-group">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<b>
+				Two Factor Authentication
+			</b>
+		</div>
+		<div class="panel-body">
+			<% if current_user && current_user.sms? %>
+				<b>Hello <%= current_user.name %>, We have sent an SMS to your registered Mobile Number (<%= current_user.country_code.to_s+"-"+current_user.mob_no.to_s.first(5)+"XXXXX" %>).</b>
+			<% elsif current_user && current_user.app? %>
+				<b>Please Open <%= current_user.two_factor_provider %> App and enter Token and Verify. If you don't have <%= current_user.two_factor_provider %> App, Please download, install and login using registred mobile number. </b>
+			<% elsif current_user.voice? %>
+				<b>You will get a call soon. Please listen it carefully and enter Token and Vefiry.</b>
+			<% elsif current_user.email? %>
+				<b>We have sent an email that contain token. Please enter Token and Verify.</b>
+			<% end %>
+			<br><br>
+			<%= form_tag(verify_token_sessions_path, method: :post) do %>
+				<div class="form-group row">
+					<%= label_tag "Enter Token", nil, class: "col-sm-2 col-form-label" %>
+					<div class="col-sm-10">
+						<%= text_field_tag 'token', nil, class: "form-control" %>
+					</div>
+				</div>
+
+				<div>
+					<%= submit_tag "Verify & Sign In", class: 'btn btn-sm btn-success' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
